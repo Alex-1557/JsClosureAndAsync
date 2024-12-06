@@ -1,0 +1,8 @@
+JavaScript's event handling itself is synchronous. When an event is dispatched, the listeners are executed immediately before any other code runs on the main thread. However, inside an event handler, you can certainly perform asynchronous operations:
+
+BK#10
+
+You can perform asynchronous operations inside event handlers, but event handling itself is synchronous. This means an event handler will finish executing before any other events or JavaScript code runs on the main thread. But asynchronous actions started within a handler (e.g., API calls, setTimeout) can continue in the background.
+The click handler starts the fetchData call, but the execution then goes back to the main thread's event loop. Other events can happen, and the UI remains responsive. When fetchData completes, the rest of the click handler's code will execute.
+
+BK#20

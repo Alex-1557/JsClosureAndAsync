@@ -1,0 +1,3 @@
+Here are 5 examples demonstrating key concepts related to setTimeout in JavaScript, including closures, the event loop, and the call stack:
+
+AD#10.js - AD#50.js - These examples highlight important aspects of setTimeout's behavior, including its interaction with the event loop, closures, how to cancel timeouts, and how even a 0ms delay defers execution. Understanding these concepts is crucial for writing correct and efficient asynchronous JavaScript code.

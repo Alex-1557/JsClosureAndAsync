@@ -1,0 +1,3 @@
+These examples show how closures work in conjunction with asynchronous operations, allowing inner functions (callbacks, async functions, etc.) to "remember" and access variables from their outer scope, even after the outer function has finished executing. This behavior is fundamental to managing state and data in asynchronous JavaScript programming. The examples cover setTimeout, event handling, promises, async/await, API calls with callbacks and creating private variables with closures which can be used in asynchronous functions. These examples illustrate how asynchronous operations combined with closures provide powerful tools to handle complex scenarios.
+
+BD#10.js - BD#60.js

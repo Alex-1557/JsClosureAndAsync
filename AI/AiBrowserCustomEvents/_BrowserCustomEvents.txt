@@ -1,0 +1,4 @@
+You can create and emit custom events in your JavaScript code within a browser environment using the Event constructor or the CustomEvent constructor (for events with custom data).
+These examples provide a range of use cases for custom events, demonstrating data passing, bubbling and capturing, class-based event emitters and the way to process async operation inside event handlers. Remember to handle any asynchronous operations within the event listener appropriately (e.g., using Promises, async/await, or callbacks) to prevent blocking the main thread. Custom events are extremely useful for creating modular and decoupled components, enabling communication and interactivity between different parts of your web application.
+
+BJ#10 - BJ#40

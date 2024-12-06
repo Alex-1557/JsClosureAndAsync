@@ -1,0 +1,33 @@
+HTTP Requests: While Angular's HttpClient returns Observables, you can convert them to Promises using .toPromise() if you need a single value. However, Observables are often preferred for their flexibility in handling HTTP requests (e.g., retrying, caching).
+Routing Events: Angular's Router emits Observables for navigation events, allowing you to react to route changes over time.
+Reactive Forms: Reactive Forms in Angular heavily rely on Observables to manage form value changes and validation.
+Async Pipe: The async pipe in Angular templates works specifically with Observables, simplifying asynchronous data binding.
+In JavaScript (in general):
+Event Handling: Observables are well-suited for handling continuous streams of events, such as mouse clicks, keyboard input, or WebSocket messages.
+Asynchronous Operations: Promises are often used for one-time asynchronous operations like reading a file or making an API request when you only need the final result.
+Reactive Programming: RxJS (which is based on Observables) is the foundation for reactive programming in JavaScript, allowing you to manage complex asynchronous data flows.
+Choosing between Observables and Promises:
+Use Promises when you need a single value from an asynchronous operation and don't need to cancel or transform the result.
+Use Observables when dealing with streams of data, events, or multiple values over time, or when you need the ability to cancel, retry, or transform the asynchronous operation. In Angular, Observables are generally preferred due to their integration with the framework and their versatility in handling various asynchronous scenarios.
+
+Angular uses RxJS Observables extensively for handling asynchronous operations, though it's not based on Observables exclusively; Promises are also used. Here's how they relate:
+Many Angular APIs return Observables: Many Angular APIs, especially those dealing with asynchronous tasks like HTTP requests, routing events, and form interactions, return RxJS Observables. This allows Angular developers to work with asynchronous data streams and react to changes over time.
+The async pipe and Observables: The async pipe in Angular templates is specifically designed to work with Observables. It subscribes to the Observable, handles the asynchronous nature of the data stream, and automatically unsubscribes when the component is destroyed, preventing memory leaks.
+Reactive Forms and Observables: Angular's Reactive Forms heavily rely on Observables to manage form state, value changes, and validation.
+HTTP requests and Observables: The HttpClient service in Angular returns Observables that represent the HTTP response stream.
+Promises are still used: While Observables are prevalent, Angular doesn't exclude Promises. You'll still encounter Promises in some scenarios, and Angular provides mechanisms to integrate them smoothly. You can, for example, use the async pipe with a Promise (it will be treated as an Observable that emits a single value). You can also convert a Promise to an Observable using from, as explained earlier.
+Internal implementations: Some internal aspects of Angular might use both Observables and Promises in their implementation, but the exposed APIs predominantly lean towards Observables for asynchronous operations.
+In essence, while Angular integrates and supports both, it heavily favors RxJS Observables for its asynchronous operations and reactive nature, providing APIs and tools (like the async pipe and Reactive Forms) tailored for Observables. This encourages developers to adopt a reactive programming style within Angular applications.
+
+BC#10 - BC#30
+
+from(promise): Creates an Observable that emits the resolved value of the Promise.
+firstValueFrom(observable) / lastValueFrom(observable) (RxJS 7+): The preferred way to get a single value from an Observable as a Promise in Angular. firstValueFrom gets the first emitted value; lastValueFrom gets the last value (and throws an error if the observable doesn't complete).
+toPromise() (RxJS 6 and older - less common now): Converts an Observable to a Promise that resolves with the last emitted value when the Observable completes. Use with caution and prefer firstValueFrom or lastValueFrom.
+Error handling: When converting to promises, use try...catch blocks or .catch on the promise to handle potential errors.
+These examples demonstrate the most common conversions between Promises and Observables in both JavaScript and Angular contexts, along with best practices using the latest RxJS features. Choose the approach that best suits your needs, keeping in mind the differences between these two asynchronous primitives.
+
+
+RxJS is not embedded within Angular itself. Angular depends on RxJS as a separate library and uses it extensively. When you create an Angular project, RxJS is listed as a dependency and is installed automatically (via npm or yarn). Angular components and services import and use RxJS operators and functionalities, but the RxJS library itself is a standalone entity. So, RxJS is a dependency, not an embedded part of Angular's core.
+Angular's HttpClient methods return Observables of HttpResponse objects (or HttpEvent objects for more fine-grained control). They are RxJS Observables, but what they "return" isn't identical to a plain RxJS Observable; they are specialized Observables that carry HTTP-specific information within their emitted values.
+The key is that the HttpClient methods return Observables that emit HttpResponse (or HttpEvent) objects. So, they are built using RxJS Observables, but what they deliver is tailored to the HTTP context. A plain RxJS Observable created with, say, of(1, 2, 3) emits numbers; an HttpClient Observable emits HttpResponse objects relevant to HTTP communication.

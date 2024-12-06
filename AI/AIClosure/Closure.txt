@@ -1,0 +1,21 @@
+A closure in JavaScript is a function that has access to variables 
+from its surrounding lexical environment (or outer function scope), 
+even after the outer function has returned. 
+In essence, a closure "remembers" the environment in which it was created. 
+This is possible because functions in JavaScript are first-class objects, 
+meaning they can be treated like any other variable (passed as arguments, 
+returned from functions, assigned to variables).
+So, functions 'remember' the environment in which they were declared/created.
+Closures ties in very closely with Lexical Scope, can be seen when returning a function reference.
+Every closure has three scopes: Local scope (Own scope), Enclosing scope (can be block, function, or module scope), Global scope 
+
+
+These examples demonstrate the power and potential pitfalls of closures. 
+Understanding closures is essential for writing efficient and maintainable JavaScript code. 
+Used correctly, they enhance modularity and enable powerful functional programming techniques. 
+Used carelessly, they can lead to unexpected behavior and memory management problems.
+
+AC#10.js - AS#100.js - basic 10 examples
+AT#10.js - AT$50.js - Closures and this 
+AL#10.js - AL#20.js - Closures in Loops (Revisited) - Performance , Performance Considerations 
+AM#10.js - AM#50.js - Module Pattern

@@ -1,0 +1,3 @@
+These examples showcase common patterns using EventEmitter: basic event handling, one-time listeners, error management, asynchronous operations with custom events, using EventEmitter in classes, and how to remove listeners which can help to avoid memory leaks. These patterns are useful for building applications that require communication between different parts of your code or for creating modular and reusable components with custom event handling.
+
+BH#10.js - BH#50.js
