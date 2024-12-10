@@ -1,0 +1,37 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+// Every closure has three scopes: Local scope (Own scope), Enclosing scope (can be block, function, or module scope), Global scope
+
+
+// global scope
+const e = 10;
+function sum(a) {
+    return function (b) {
+        return function (c) {
+            // outer functions scope
+            return function (d) {
+                // local scope
+                return a + b + c + d + e;
+            };
+        };
+    };
+}
+
+the same without anonymous function and with function factory
+
+function sum1(a) {
+  return function sum2(b) {
+    return function sum3(c) {
+      return function sum4(d) {
+        return a + b + c + d + e;
+      };
+    };
+  };
+}
+const sum2 = sum1(1);
+const sum3 = sum2(2);
+const sum4 = sum3(3);
+const result = sum4(4);
+
+in any case result is:
+
+20
